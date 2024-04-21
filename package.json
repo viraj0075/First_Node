@@ -1,0 +1,20 @@
+{
+  "name": "chaiaurviraj",
+  "version": "1.0.0",
+  "description": "a basci application for the deployment",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "viraj",
+    "node",
+    "chai"
+  ],
+  "author": "Viraj Koradia",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
