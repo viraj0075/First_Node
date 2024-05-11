@@ -26,6 +26,11 @@ app.get("/",(req,res) =>{
     res.send("Hellon Viraj");
 })
 
+app.get("/viraj",(req,res) =>
+{
+  res.send("This is Viraj API")
+})
+
 app.get("/twitter",(req,res) =>{
     res.send("Hello Viraj this is Twitter");
 })
