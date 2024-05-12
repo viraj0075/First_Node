@@ -1,0 +1,14 @@
+{
+  "name": "mongoose",
+  "version": "1.0.0",
+  "description": "Viraj Koradia",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Viraj Koradia",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.3.4"
+  }
+}
