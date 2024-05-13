@@ -19,6 +19,7 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
   },
+  //This will add the created at and updatedAt the end of the schema
   { timestamps: true }
 );
 
