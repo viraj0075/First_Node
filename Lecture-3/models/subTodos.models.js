@@ -17,4 +17,4 @@ const subTodoSchema = new mongoose.Schema({
 
 });
 
-export const todo =  mongoose.model("SubTodo",todoSchema);
+export const todo =  mongoose.model("SubTodo",subTodoSchema);
