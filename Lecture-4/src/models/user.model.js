@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 const userSchema = new Schema(
   {
-    userName: {
+    username: {
       type: String,
       required: true,
       unique: true,
@@ -30,8 +30,7 @@ const userSchema = new Schema(
       required: true,
     },
     coverImage: {
-      type: String, //cloudinary url
-      required: true,
+      type: String //cloudinary url
     },
     watchHistory: [
       {
