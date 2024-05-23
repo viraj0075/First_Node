@@ -30,7 +30,7 @@ const userSchema = new Schema(
       required: true,
     },
     coverImage: {
-      type: String //cloudinary url
+      type: String, //cloudinary url
     },
     watchHistory: [
       {
@@ -58,9 +58,10 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.isPasswordCorrect = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
-
-userSchema.methods.genrateAccessToken = function () {
-  jwt.sign(
+//THis sare the token short Lived
+//when you have this token you would access the data where you have the auth req.
+userSchema.methods.genrateAccessToken = async function () {
+  const accessToken = await jwt.sign(
     {
       _id: this._id,
       email: this.email,
@@ -72,17 +73,23 @@ userSchema.methods.genrateAccessToken = function () {
       expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
     }
   );
+  // console.log(accessToken, "This is Access Token from the user.model.js");
+  return accessToken;
 };
-userSchema.methods.genrateRefreshToken = function () {
-    jwt.sign(
-        {
-          _id: this._id
-        },
-        proccess.env.REFRESH_TOKEN_SECRET,
-        {
-          expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
-        }
-      );
+//THis sare the token long Lived
+//when you have this token you dont have to make enter password again and again instead when ypu have this token you will be given new token to access it
+userSchema.methods.genrateRefreshToken = async function () {
+  const refreshToken = await jwt.sign(
+    {
+      _id: this._id,
+    },
+    process.env.REFRESH_TOKEN_SECRET,
+    {
+      expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
+    }
+  );
+  // console.log(refreshToken, "This is Refresh Token from the user.model.js");
+  return refreshToken;
 };
 
 export const User = mongoose.model("User", userSchema);
